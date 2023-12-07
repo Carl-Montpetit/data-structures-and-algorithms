@@ -1,16 +1,24 @@
-CPP_COMPILER = g++
-CPP_FLAGS = -std=c++20 -Wall -Wextra
-OBJECTS = main.o
-EXECUTABLE = data_structures_and_algorithms
+CC := g++
+CFLAGS := -std=c++20 -Wall -Wextra
 
-all: $(EXECUTABLE)
+# List of source files
+SRCS := array.cpp main.cpp
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CPP_COMPILER) $(CPP_FLAGS) -o $(EXECUTABLE) main.o
+# List of object files derived from source files
+OBJS := $(SRCS:.cpp=.o)
 
-main.o: main.cpp array.hpp
-	$(CPP_COMPILER) $(CPP_FLAGS) -c main.cpp
+# Output executable name
+EXECUTABLE := data_structures_and_algorithms
 
+# Rule to build the executable
+$(EXECUTABLE): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(EXECUTABLE)
+
+# Rule to build object files from source files
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean rule to remove object files and the executable
 clean:
-	rm -f $(EXECUTABLE) *.o
+	rm -f $(OBJS) $(EXECUTABLE)
 

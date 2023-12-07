@@ -1,9 +1,8 @@
 #include "array.hpp"
-#include <memory>
 
 int main() {
   // create new array in the heap of length 100 with smart pointer
-  std::unique_ptr<Array<int>> array_int = std::make_unique<Array<int>>(20);
+  std::unique_ptr<Array> array_int = std::make_unique<Array>(20);
 
   /**
    * manage array_int
