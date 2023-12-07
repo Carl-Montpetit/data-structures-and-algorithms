@@ -1,7 +1,7 @@
 #include "array.hpp"
+#include <iostream>
 #include <random>
 #include <stdexcept>
-#include <iostream>
 /**
  * implementations
  */
@@ -68,3 +68,12 @@ size_t Array::get_capacity() { return _capacity; }
 
 size_t Array::get_number_of_elements() { return _number_of_elements; }
 
+/**
+ * sorting algorithms
+ */
+// bubble sorting
+void Array::bubble_sort() {
+  for (size_t i = 0; i < _number_of_elements; i++) {
+
+  }
+}

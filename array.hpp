@@ -3,20 +3,63 @@
 #include <cstddef>
 #include <memory>
 /**
- * definitions
+ * declarations
  */
 class Array {
 public:
+  /**
+   * O(1)
+   */
   Array(size_t);
+  /**
+   * O(1)
+   */
   int get_element_at_index(const size_t);
+  /**
+   * O(1)
+   */
   void set_element_at_index(const size_t);
+  /**
+   * O(1)
+   */
   void push_element(const int &);
+  /**
+   * O(n)
+   * best: O(1)
+   * worse: O(n)
+   */ 
   void fill_array_random_int();
+  /**
+   * O(n)
+   * best: O(1)
+   * worse: O(n)
+   */
   void print_all_elements();
+  /**
+   * O(1)
+   */
   void print_number_of_elements();
+  /**
+   * O(1)
+   */
   void print_capacity();
+  /**
+   * O(n^2)
+   * best:
+   * worse:
+   */
+  void bubble_sort();
+  /**
+   * O(1)
+   */
   bool get_is_full();
+  /**
+   * O(1)
+   */
   size_t get_capacity();
+  /**
+   * O(1)
+   */
   size_t get_number_of_elements();
 
 private:
@@ -26,10 +69,5 @@ private:
   size_t _number_of_elements;
   bool _is_full;
 };
-
-/**
- * sorting algorithms
- */
-// bubble sorting
 
 #endif
