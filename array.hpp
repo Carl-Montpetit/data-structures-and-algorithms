@@ -10,7 +10,7 @@ public:
   /**
    * O(1)
    */
-  Array(size_t);
+  Array(const size_t);
   /**
    * O(1)
    */
@@ -18,21 +18,21 @@ public:
   /**
    * O(1)
    */
-  void set_element_at_index(const size_t);
-  /**
+  void set_element_at_index(const size_t, const int);
+  /** 
    * O(1)
    */
   void push_element(const int &);
   /**
    * O(n)
    * best: O(1)
-   * worse: O(n)
+   * worst: O(n)  
    */ 
   void fill_array_random_int();
   /**
    * O(n)
    * best: O(1)
-   * worse: O(n)
+   * worst: O(n)
    */
   void print_all_elements();
   /**
@@ -44,9 +44,13 @@ public:
    */
   void print_capacity();
   /**
+   * O(1)
+   */
+  void swap_two_indexes_elements(const size_t, const size_t);
+  /**
    * O(n^2)
-   * best:
-   * worse:
+   * best: O(n)
+   * worst: O(n^2)
    */
   void bubble_sort();
   /**

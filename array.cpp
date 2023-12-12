@@ -23,6 +23,10 @@ int Array::get_element_at_index(const size_t index) {
   }
 }
 
+void Array::set_element_at_index(const size_t index, const int value) {
+  this->_elements[index] = value;
+}
+
 void Array::push_element(const int &element) {
   if (!_is_full && _number_of_elements != _capacity) {
     _elements[_number_of_elements] = element;
@@ -49,17 +53,23 @@ void Array::fill_array_random_int() {
 void Array::print_all_elements() {
   for (size_t i = 0; i < _number_of_elements; i++) {
     std::cout << "element at index " << i << ": "
-              << this->get_element_at_index(i) << std::endl;
+              << this->get_element_at_index(i) << '\n';
   }
 }
 
 void Array::print_number_of_elements() {
-  std::cout << "number of elements: " << this->get_number_of_elements()
-            << std::endl;
+  std::cout << "number of elements: " << this->get_number_of_elements() << '\n';
 }
 
 void Array::print_capacity() {
-  std::cout << "capacity: " << this->get_capacity() << std::endl;
+  std::cout << "capacity: " << this->get_capacity() << '\n';
+}
+
+void Array::swap_two_indexes_elements(const size_t index_a,
+                                      const size_t index_b) {
+  int temp = this->_elements[index_a];
+  this->_elements[index_a] = this->_elements[index_b];
+  this->_elements[index_b] = temp;
 }
 
 bool Array::get_is_full() { return _is_full; }
@@ -71,9 +81,12 @@ size_t Array::get_number_of_elements() { return _number_of_elements; }
 /**
  * sorting algorithms
  */
-// bubble sorting
 void Array::bubble_sort() {
-  for (size_t i = 0; i < _number_of_elements; i++) {
-
+  for (size_t i = 0; i < this->_number_of_elements - 1; i++) {
+    for (size_t j = 0; j < this->_number_of_elements - i - 1; j++) {
+      if (this->_elements[j] > this->_elements[j + 1]) {
+        this->swap_two_indexes_elements(j, j + 1);
+      }
+    }
   }
 }
