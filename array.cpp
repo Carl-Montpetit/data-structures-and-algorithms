@@ -15,16 +15,8 @@ Array::Array(size_t capacity)
   }
 }
 
-int Array::get_element_at_index(const size_t index) {
-  if (index >= 0 && index <= _number_of_elements - 1) {
-    return _elements[index];
-  } else {
-    throw std::out_of_range("Cannot get element at index, out of bounds!");
-  }
-}
-
 void Array::set_element_at_index(const size_t index, const int value) {
-  this->_elements[index] = value;
+  _elements[index] = value;
 }
 
 void Array::push_element(const int &element) {
@@ -42,51 +34,84 @@ void Array::fill_array_random_int() {
   std::random_device random_device;
   std::mt19937 gen(random_device());
   std::uniform_int_distribution<int> distribution(1, 100);
-  for (size_t i = 0; i < this->get_capacity(); i++) {
+  for (size_t i = 0; i < get_capacity(); i++) {
     // add random int in array
-    this->push_element(distribution(gen));
+    push_element(distribution(gen));
   }
-  if (this->get_number_of_elements() == this->get_capacity())
+  if (get_number_of_elements() == get_capacity())
     _is_full = true;
 }
 
 void Array::print_all_elements() {
   for (size_t i = 0; i < _number_of_elements; i++) {
-    std::cout << "element at index " << i << ": "
-              << this->get_element_at_index(i) << '\n';
+    std::cout << "element at index " << i << ": " << get_element_at_index(i)
+              << '\n';
   }
 }
 
 void Array::print_number_of_elements() {
-  std::cout << "number of elements: " << this->get_number_of_elements() << '\n';
+  std::cout << "number of elements: " << get_number_of_elements() << '\n';
 }
 
 void Array::print_capacity() {
-  std::cout << "capacity: " << this->get_capacity() << '\n';
+  std::cout << "capacity: " << get_capacity() << '\n';
 }
 
 void Array::swap_two_indexes_elements(const size_t index_a,
                                       const size_t index_b) {
-  int temp = this->_elements[index_a];
-  this->_elements[index_a] = this->_elements[index_b];
-  this->_elements[index_b] = temp;
+  int temp = _elements[index_a];
+  _elements[index_a] = _elements[index_b];
+  _elements[index_b] = temp;
 }
 
 bool Array::get_is_full() { return _is_full; }
+
+int Array::get_element_at_index(const size_t index) {
+  if (index >= 0 && index <= _number_of_elements - 1) {
+    return _elements[index];
+  } else {
+    throw std::out_of_range("Cannot get element at index, out of bounds!");
+  }
+}
 
 size_t Array::get_capacity() { return _capacity; }
 
 size_t Array::get_number_of_elements() { return _number_of_elements; }
 
 /**
- * sorting algorithms
+ * search algorithms
+ */
+int Array::linear_search(const int target) {
+  bool is_found = false;
+  int target_position = -1;
+  size_t i = 0;
+
+  while (is_found == false && i <= _number_of_elements) {
+    if (_elements[i] == target) {
+      target_position = i;
+      is_found = true;
+    }
+    i++;
+  }
+
+  return target_position;
+}
+
+/**
+ * sort algorithms
  */
 void Array::bubble_sort() {
-  for (size_t i = 0; i < this->_number_of_elements - 1; i++) {
-    for (size_t j = 0; j < this->_number_of_elements - i - 1; j++) {
-      if (this->_elements[j] > this->_elements[j + 1]) {
-        this->swap_two_indexes_elements(j, j + 1);
+  for (size_t i = 0; i < _number_of_elements - 1; i++) {
+    bool is_sorted = true;
+    for (size_t j = 0; j < _number_of_elements - i - 1; j++) {
+      if (_elements[j] > _elements[j + 1]) {
+        swap_two_indexes_elements(j, j + 1);
+        is_sorted = false;
       }
     }
+    // if the last pass didn't swap any element it means the array is already
+    // sorted.
+    if (is_sorted)
+      break;
   }
 }

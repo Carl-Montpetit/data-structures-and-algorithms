@@ -13,8 +13,15 @@ int main() {
   // array_int->print_number_of_elements();
   array_int->print_all_elements();
   std::cout << "==============================================" << '\n';
-  array_int->bubble_sort();
-  array_int->print_all_elements();
+  // array_int->bubble_sort();
+  // array_int->print_all_elements();
+
+  int found_number_position = array_int->linear_search(1);
+  if (found_number_position > 0) {
+    std::cout << "FOUND AT: " << found_number_position << '\n';
+  } else {
+    std::cout << "NOT FOUND" << '\n';
+  }
 
   return 0;
 }
