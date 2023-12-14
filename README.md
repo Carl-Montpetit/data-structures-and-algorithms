@@ -1,6 +1,6 @@
 # data-structures-and-algoritms
 Implementing data structures and algorithms from scratch with C++.
-## `Array<int>` class
+## Class `Array<int>`
 ### Methods
 - construct array with fixed size
 - get/set element at index
