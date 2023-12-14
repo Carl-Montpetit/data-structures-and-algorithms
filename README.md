@@ -15,8 +15,8 @@ Implementing data structures and algorithms from scratch with C++.
 #### Searching algorithms
 
 - linear search
+- binary search
 
 #### Sorting algorithms
 
 - bubble sort
-- binary search
