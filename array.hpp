@@ -95,6 +95,11 @@ public:
   int linear_search(const int);
 
   /**
+   * 
+   */
+  int binary_search(const int);
+
+  /**
    * sort algorithms
    */
   /**

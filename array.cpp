@@ -33,7 +33,7 @@ void Array::fill_array_random_int() {
   // random int tools
   std::random_device random_device;
   std::mt19937 gen(random_device());
-  std::uniform_int_distribution<int> distribution(1, 100);
+  std::uniform_int_distribution<int> distribution(0, 1000);
   for (size_t i = 0; i < get_capacity(); i++) {
     // add random int in array
     push_element(distribution(gen));
@@ -86,12 +86,34 @@ int Array::linear_search(const int target) {
   int target_position = -1;
   size_t i = 0;
 
-  while (is_found == false && i <= _number_of_elements) {
+  while (!is_found && i <= _number_of_elements) {
     if (_elements[i] == target) {
       target_position = i;
       is_found = true;
     }
     i++;
+  }
+
+  return target_position;
+}
+
+int Array::binary_search(const int target) {
+  bool is_found = false;
+  int target_position = -1;
+  unsigned int low_index = 0;
+  unsigned int high_index = _number_of_elements - 1;
+
+  while (!is_found && low_index <= high_index) {
+    int middle_index = floor((low_index + high_index) / 2);
+    int value = _elements[middle_index];
+    if (target < value && middle_index != 0)
+      high_index = middle_index - 1;
+    else if (target > value)
+      low_index = middle_index + 1;
+    else {
+      is_found = true;
+      target_position = middle_index;
+    }
   }
 
   return target_position;
