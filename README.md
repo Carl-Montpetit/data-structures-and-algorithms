@@ -15,8 +15,11 @@ Implementing data structures and algorithms from scratch with C++.
 #### Searching algorithms
 
 - linear search
+    - Time complexity: $O(n)$
 - binary search
+    - Time complexity: $O(\log{n})$
 
 #### Sorting algorithms
 
-- bubble sort
+- bubble sort 
+    - Time complexity: $O(n^2)$
