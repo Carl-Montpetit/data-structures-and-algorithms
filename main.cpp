@@ -3,7 +3,7 @@
 
 int main() {
   // create new array in the heap of length x with smart pointer
-  std::unique_ptr<Array> array_1 = std::make_unique<Array>(4);
+  std::unique_ptr<Array> array_1 = std::make_unique<Array>(30);
 
   /**
    * manage array_1
@@ -13,13 +13,14 @@ int main() {
   array_1->print_capacity();
   array_1->print_number_of_elements();
   std::cout << "==============================================" << '\n';
+  // array_1->push_element(2);
   array_1->print_all_elements();
-  array_1->push_element(2);
   std::cout << "==============================================" << '\n';
   array_1->print_capacity();
   array_1->print_number_of_elements();
   std::cout << "==============================================" << '\n';
-  array_1->bubble_sort();
+  // array_1->bubble_sort();
+  array_1->insertion_sort();
   array_1->print_all_elements();
   std::cout << "==============================================" << '\n';
   // int found_position = array_1->linear_search(1);

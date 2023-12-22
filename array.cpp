@@ -39,10 +39,12 @@ void Array::fill_array_random_int() {
   std::random_device random_device;
   std::mt19937 gen(random_device());
   std::uniform_int_distribution<int> distribution(0, 1000);
+
   for (size_t i = 0; i < get_capacity(); i++) {
     // add random int in array
-    push_element(distribution(gen));
+    this->push_element(distribution(gen));
   }
+
   if (_number_of_elements == _capacity)
     _is_full = true;
 }
@@ -70,7 +72,6 @@ void Array::swap_two_indexes_elements(const size_t index_a,
 }
 
 void Array::double_capacity() {
-  std::cout << "Capacity doubled!" << '\n';
   size_t new_capacity = _capacity * 2;
 
   // create a new array with double capacity
@@ -161,4 +162,16 @@ void Array::bubble_sort() {
   }
 }
 
-void Array::insertion_sort() {}
+void Array::insertion_sort() {
+  for (size_t i = 1; i < _number_of_elements; i++) {
+    int x = _elements[i];
+    size_t j = i;
+
+    while (j > 0 && _elements[j - 1] > x) {
+      _elements[j] = _elements[j - 1];
+      j--;
+    }
+
+    _elements[j] = x;
+  }
+}

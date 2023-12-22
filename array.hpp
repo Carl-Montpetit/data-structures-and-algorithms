@@ -31,8 +31,8 @@ public:
 
   /**
    * O(n)
-   * best: Θ(1)
-   * worst: Θ(n)
+   * best:O(1)
+   * worst:O(n)
    */
   void fill_array_random_int();
 
@@ -40,8 +40,8 @@ public:
    * fill the array with random numbers in [1, 100].
    *
    * O(n)
-   * best: Θ(1)
-   * worst: Θ(n)
+   * best:O(1)
+   * worst:O(n)
    */
   void print_all_elements();
 
@@ -61,9 +61,9 @@ public:
   void swap_two_indexes_elements(const size_t, const size_t);
 
   /**
-   * average: O(n)
-   * best: O(1)
-   * worst: O(n)
+   * average:O(n)
+   * best:O(1)
+   * worst:O(n)
    */
   void double_capacity();
 
@@ -95,9 +95,9 @@ public:
    * return the index of the first element found.
    * else return -1.
    *
-   * average: O(n)
-   * best: Θ(1)
-   * worst: Θ(n)
+   * average:O(n)
+   * best:O(1)
+   * worst:O(n)
    */
   int linear_search(const int);
 
@@ -110,18 +110,28 @@ public:
    * sort algorithms
    */
   /**
-   * average: O(n^2)
-   * best: Θ(n)
-   * worst: Θ(n^2)
+   * adaptive
+   * stable
+   * average:O(n^2)
+   * best:O(n):ascending order
+   * worst:O(n^2):descending order
    */
   void bubble_sort();
 
   /**
-   * average: O(n)
-   * best:O(1)
-   * worst:O(n)
+   * better for linked list
+   * adaptive
+   * stable
+   * average:O(n^2)
+   * best:O(n):ascending order
+   * worst:O(n^2):descending order
    */
   void insertion_sort();
+
+  /**
+   *
+   */
+  void selection_sort();
 };
 
 #endif
