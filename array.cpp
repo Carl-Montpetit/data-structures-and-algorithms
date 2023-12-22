@@ -1,4 +1,5 @@
 #include "array.hpp"
+#include <cstddef>
 #include <iostream>
 #include <random>
 #include <stdexcept>
@@ -20,6 +21,10 @@ void Array::set_element_at_index(const size_t index, const int value) {
 }
 
 void Array::push_element(const int &element) {
+  if (_is_full) {
+    this->double_capacity();
+  }
+
   if (!_is_full && _number_of_elements != _capacity) {
     _elements[_number_of_elements] = element;
     _number_of_elements++;
@@ -38,7 +43,7 @@ void Array::fill_array_random_int() {
     // add random int in array
     push_element(distribution(gen));
   }
-  if (get_number_of_elements() == get_capacity())
+  if (_number_of_elements == _capacity)
     _is_full = true;
 }
 
@@ -62,6 +67,24 @@ void Array::swap_two_indexes_elements(const size_t index_a,
   int temp = _elements[index_a];
   _elements[index_a] = _elements[index_b];
   _elements[index_b] = temp;
+}
+
+void Array::double_capacity() {
+  std::cout << "Capacity doubled!" << '\n';
+  size_t new_capacity = _capacity * 2;
+
+  // create a new array with double capacity
+  std::unique_ptr<int[]> new_elements = std::make_unique<int[]>(new_capacity);
+
+  // copy elements from the old array to the new array
+  for (size_t i = 0; i < _number_of_elements; i++) {
+    new_elements[i] = _elements[i];
+  }
+
+  // Update array properties
+  _elements = std::move(new_elements);
+  _capacity = new_capacity;
+  _is_full = false;
 }
 
 bool Array::get_is_full() { return _is_full; }
@@ -137,3 +160,5 @@ void Array::bubble_sort() {
       break;
   }
 }
+
+void Array::insertion_sort() {}

@@ -1,8 +1,8 @@
-# data-structures-and-algoritms
+# data-structures-and-algorithms
 
 Implementing data structures and algorithms from scratch with C++.
 
-## Class `Array<int>`
+## Class `Array<int>` with dynamic capacity
 
 ### Methods
 
@@ -15,11 +15,11 @@ Implementing data structures and algorithms from scratch with C++.
 #### Searching algorithms
 
 - linear search
-    - Time complexity: $O(n)$
+  - Time complexity: $O(n)$
 - binary search
-    - Time complexity: $O(\log{n})$
+  - Time complexity: $O(\log{n})$
 
 #### Sorting algorithms
 
-- bubble sort 
-    - Time complexity: $O(n^2)$
+- bubble sort
+  - Time complexity: $O(n^2)$

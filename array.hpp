@@ -61,6 +61,13 @@ public:
   void swap_two_indexes_elements(const size_t, const size_t);
 
   /**
+   * average: O(n)
+   * best: O(1)
+   * worst: O(n)
+   */
+  void double_capacity();
+
+  /**
    * O(1)
    */
   bool get_is_full();
@@ -84,7 +91,7 @@ public:
    * search algorithms
    */
   /**
-   * search the first occurence of an integer in the array.
+   * search the first occurrence of an integer in the array.
    * return the index of the first element found.
    * else return -1.
    *
@@ -95,7 +102,7 @@ public:
   int linear_search(const int);
 
   /**
-   * 
+   *
    */
   int binary_search(const int);
 
@@ -103,11 +110,18 @@ public:
    * sort algorithms
    */
   /**
-   * O(n^2)
+   * average: O(n^2)
    * best: Θ(n)
    * worst: Θ(n^2)
    */
   void bubble_sort();
+
+  /**
+   * average: O(n)
+   * best:O(1)
+   * worst:O(n)
+   */
+  void insertion_sort();
 };
 
 #endif
