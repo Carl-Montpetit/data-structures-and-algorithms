@@ -175,3 +175,5 @@ void Array::insertion_sort() {
     _elements[j] = x;
   }
 }
+
+void Array::selection_sort() {}

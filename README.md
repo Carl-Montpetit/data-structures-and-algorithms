@@ -6,20 +6,26 @@ Implementing data structures and algorithms from scratch with C++.
 
 ### Methods
 
-- construct array with fixed size
-- get/set element at index
-- push element
-- fill array with random numbers
-- swap elements
+- set_element_at_index
+- push_element
+- fill_array_random_int
+- print_all_elements
+- print_number_of_elements
+- print_capacity
+- swap_two_indexes_elements
+- double_capacity
+- get_is_full
+- get_element_at_index
+- get_capacity
+- get_number_of_elements
 
 #### Searching algorithms
 
-- linear search
-  - Time complexity: $O(n)$
-- binary search
-  - Time complexity: $O(\log{n})$
+- linear_search
+- binary_search
 
 #### Sorting algorithms
 
-- bubble sort
-  - Time complexity: $O(n^2)$
+- bubble_sort
+- insertion_sort
+- selection_sort
