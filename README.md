@@ -51,14 +51,13 @@ Implementing data structures and algorithms from scratch with C++.
 - linear_search
 
   > Search the first occurrence of an integer in the array. Return the index of
-  > the first element found. 
-  > Else return -1.
+  > the first element found. Else return -1.
+
   - average: O(n)
   - best: O(1): find element at first position
   - worst: O(n): find element at last position
 
 - binary_search
-
   > Dichotomous search efficiently find position of an element in an array.
   - average: $O(\log n)$
   - best: $O(1)$
@@ -67,9 +66,9 @@ Implementing data structures and algorithms from scratch with C++.
 #### Sorting algorithms
 
 - bubble_sort
-    - average: $O(n^2)$
+  - average: $O(n^2)$
 - insertion_sort
-    - average: $O(n^2)$
+  - average: $O(n^2)$
 - selection_sort
 
 ## Class `LinkedList<int>`
