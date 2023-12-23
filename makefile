@@ -2,7 +2,7 @@ CC := g++
 CFLAGS := -std=c++20 -Wall -Wextra
 
 # List of source files
-SRCS := array.cpp main.cpp
+SRCS := main.cpp array.cpp node.cpp linked-list.cpp
 
 # List of object files derived from source files
 OBJS := $(SRCS:.cpp=.o)

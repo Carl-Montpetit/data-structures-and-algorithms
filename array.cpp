@@ -9,7 +9,7 @@
 Array::Array(size_t capacity)
     : _capacity(capacity), _number_of_elements(0), _is_full(false) {
   if (capacity >= 2) {
-    _elements = std::make_unique<int[]>(_capacity);
+    _elements = new int[_capacity];
     _capacity = capacity;
   } else {
     throw std::invalid_argument("Error: Array size must be greater than 1!");
@@ -75,7 +75,7 @@ void Array::double_capacity() {
   size_t new_capacity = _capacity * 2;
 
   // create a new array with double capacity
-  std::unique_ptr<int[]> new_elements = std::make_unique<int[]>(new_capacity);
+  int *new_elements = new int[new_capacity];
 
   // copy elements from the old array to the new array
   for (size_t i = 0; i < _number_of_elements; i++) {
