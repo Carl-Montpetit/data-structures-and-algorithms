@@ -52,7 +52,7 @@ Implementing data structures and algorithms from scratch with C++.
 
   > Search the first occurrence of an integer in the array. Return the index of
   > the first element found. 
-  > Else return -1.
+  > Else return -1.
   - average: O(n)
   - best: O(1): find element at first position
   - worst: O(n): find element at last position
