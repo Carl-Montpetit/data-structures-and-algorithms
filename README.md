@@ -74,6 +74,8 @@ Implementing data structures and algorithms from scratch with C++.
 
 ## Class `Node<int>`
 
+### Methods
+
 - constructor
 - destructor
 - get_next_node
@@ -83,9 +85,10 @@ Implementing data structures and algorithms from scratch with C++.
 
 ## Class `LinkedList<Node<int>>`
 
+### Methods
+
 - constructor
 - destructor
 - void set_element_at_index
 - void push_node
 
-### Methods
