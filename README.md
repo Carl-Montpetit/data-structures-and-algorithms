@@ -77,18 +77,31 @@ Implementing data structures and algorithms from scratch with C++.
 ### Methods
 
 - constructor
+    - $O(1)$
 - destructor
+    - $O(1)$
 - get_next_node
+    - $O(1)$
 - get_content
+    - $O(1)$
 - set_next_node
+    - $O(1)$
 - set_content
+    - $O(1)$
 
 ## Class `LinkedList<Node<int>>`
 
 ### Methods
 
 - constructor
+    - $O(1)$
 - destructor
+    - average: $O(n)$
+    - best: $O(1)$: one node or none in current linked list
+    - worst: $O(n)$: call $n$ time Node class destructor for each nodes in linked list
 - void set_element_at_index
+    - TODO
 - void push_node
-
+    - average: $O(n)$
+    - best: $O(1)$: no node in current linked list
+    - worst: $O(n)$: $n$ nodes in current linked list
