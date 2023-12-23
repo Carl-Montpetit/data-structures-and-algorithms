@@ -4,6 +4,8 @@
 
 LinkedList::LinkedList() : _first_node(nullptr), _number_of_nodes(0) {}
 
+LinkedList::~LinkedList() { delete _first_node; }
+
 void LinkedList::set_element_at_index(const size_t index, const int content) {}
 
 void LinkedList::push_node(const int content) {

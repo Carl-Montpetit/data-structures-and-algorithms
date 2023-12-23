@@ -16,6 +16,8 @@ Array::Array(size_t capacity)
   }
 }
 
+Array::~Array() { delete[] _elements; }
+
 void Array::set_element_at_index(const size_t index, const int value) {
   _elements[index] = value;
 }

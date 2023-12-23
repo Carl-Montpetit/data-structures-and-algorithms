@@ -1,9 +1,7 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 #include <cstddef>
-/**
- * declarations
- */
+
 class Array {
 private:
   // contain the address of the first element of the array
@@ -14,7 +12,7 @@ private:
 
 public:
   Array(const size_t);
-  ~Array(); // TODO
+  ~Array();
   void set_element_at_index(const size_t, const int);
   void push_element(const int &);
   void fill_array_random_int();
@@ -29,32 +27,8 @@ public:
   size_t get_number_of_elements();
   int linear_search(const int);
   int binary_search(const int);
-
-  /**
-   * sort algorithms
-   */
-  /**
-   * adaptive
-   * stable
-   * average:O(n^2)
-   * best:O(n):ascending order
-   * worst:O(n^2):descending order
-   */
   void bubble_sort();
-
-  /**
-   * better for linked list
-   * adaptive
-   * stable
-   * average:O(n^2)
-   * best:O(n):ascending order
-   * worst:O(n^2):descending order
-   */
   void insertion_sort();
-
-  /**
-   *
-   */
   void selection_sort();
 };
 
