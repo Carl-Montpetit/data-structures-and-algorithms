@@ -1,7 +1,8 @@
 # data-structures-and-algorithms
 
 - [Array<int>](#class-arrayint-with-dynamic-capacity)
-- [LinkedList<int>](#class-linkedlistint)
+- [Node<int>](#class-nodeint)
+- [LinkedList<Node<int>>](#class-linkedlistnodeint)
 
 Implementing data structures and algorithms from scratch with C++.
 
@@ -9,9 +10,9 @@ Implementing data structures and algorithms from scratch with C++.
 
 ### Methods
 
-- Array
+- constructor
   - $O(1)$
-- ~Array
+- destructor
   - $O(1)$
 - set_element_at_index
   - $O(1)$
@@ -71,6 +72,20 @@ Implementing data structures and algorithms from scratch with C++.
   - average: $O(n^2)$
 - selection_sort
 
-## Class `LinkedList<int>`
+## Class `Node<int>`
+
+- constructor
+- destructor
+- get_next_node
+- get_content
+- set_next_node
+- set_content
+
+## Class `LinkedList<Node<int>>`
+
+- constructor
+- destructor
+- void set_element_at_index
+- void push_node
 
 ### Methods
