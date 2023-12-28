@@ -1,10 +1,10 @@
 # data-structures-and-algorithms
 
+Implementing data structures and algorithms from scratch with C++.
+
 - [Array<T>](#class-arrayt-with-dynamic-capacity)
 - [Node<T>](#class-nodet)
 - [LinkedList<Node<T>>](#class-linkedlistnodet)
-
-Implementing data structures and algorithms from scratch with C++.
 
 ## Class `Array<T>` with dynamic capacity
 
