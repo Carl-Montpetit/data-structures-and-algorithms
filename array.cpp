@@ -1,12 +1,11 @@
 #include "array.hpp"
-#include <cstddef>
 #include <iostream>
 #include <random>
 #include <stdexcept>
 /**
  * implementations
  */
-Array::Array(size_t capacity)
+Array::Array(const unsigned int capacity)
     : _capacity(capacity), _number_of_elements(0), _is_full(false) {
   if (capacity >= 2) {
     _elements = new int[_capacity];
@@ -18,7 +17,7 @@ Array::Array(size_t capacity)
 
 Array::~Array() { delete[] _elements; }
 
-void Array::set_element_at_index(const size_t index, const int value) {
+void Array::set_element_at_index(const unsigned int index, const int value) {
   _elements[index] = value;
 }
 
@@ -42,7 +41,7 @@ void Array::fill_array_random_int() {
   std::mt19937 gen(random_device());
   std::uniform_int_distribution<int> distribution(0, 1000);
 
-  for (size_t i = 0; i < get_capacity(); i++) {
+  for (unsigned int i = 0; i < get_capacity(); i++) {
     // add random int in array
     this->push_element(distribution(gen));
   }
@@ -52,7 +51,7 @@ void Array::fill_array_random_int() {
 }
 
 void Array::print_all_elements() {
-  for (size_t i = 0; i < _number_of_elements; i++) {
+  for (unsigned int i = 0; i < _number_of_elements; i++) {
     std::cout << "element at index " << i << ": " << get_element_at_index(i)
               << '\n';
   }
@@ -66,21 +65,21 @@ void Array::print_capacity() {
   std::cout << "capacity: " << get_capacity() << '\n';
 }
 
-void Array::swap_two_indexes_elements(const size_t index_a,
-                                      const size_t index_b) {
+void Array::swap_two_indexes_elements(const unsigned int index_a,
+                                      const unsigned int index_b) {
   int temp = _elements[index_a];
   _elements[index_a] = _elements[index_b];
   _elements[index_b] = temp;
 }
 
 void Array::double_capacity() {
-  size_t new_capacity = _capacity * 2;
+  unsigned int new_capacity = _capacity * 2;
 
   // create a new array with double capacity
   int *new_elements = new int[new_capacity];
 
   // copy elements from the old array to the new array
-  for (size_t i = 0; i < _number_of_elements; i++) {
+  for (unsigned int i = 0; i < _number_of_elements; i++) {
     new_elements[i] = _elements[i];
   }
 
@@ -92,7 +91,7 @@ void Array::double_capacity() {
 
 bool Array::get_is_full() { return _is_full; }
 
-int Array::get_element_at_index(const size_t index) {
+int Array::get_element_at_index(const unsigned int index) {
   if (index >= 0 && index <= _number_of_elements - 1) {
     return _elements[index];
   } else {
@@ -100,9 +99,9 @@ int Array::get_element_at_index(const size_t index) {
   }
 }
 
-size_t Array::get_capacity() { return _capacity; }
+unsigned int Array::get_capacity() { return _capacity; }
 
-size_t Array::get_number_of_elements() { return _number_of_elements; }
+unsigned int Array::get_number_of_elements() { return _number_of_elements; }
 
 /**
  * search algorithms
@@ -110,7 +109,7 @@ size_t Array::get_number_of_elements() { return _number_of_elements; }
 int Array::linear_search(const int target) {
   bool is_found = false;
   int target_position = -1;
-  size_t i = 0;
+  unsigned int i = 0;
 
   while (!is_found && i <= _number_of_elements) {
     if (_elements[i] == target) {
@@ -149,9 +148,9 @@ int Array::binary_search(const int target) {
  * sort algorithms
  */
 void Array::bubble_sort() {
-  for (size_t i = 0; i < _number_of_elements - 1; i++) {
+  for (unsigned int i = 0; i < _number_of_elements - 1; i++) {
     bool is_sorted = true;
-    for (size_t j = 0; j < _number_of_elements - i - 1; j++) {
+    for (unsigned int j = 0; j < _number_of_elements - i - 1; j++) {
       if (_elements[j] > _elements[j + 1]) {
         swap_two_indexes_elements(j, j + 1);
         is_sorted = false;
@@ -165,9 +164,9 @@ void Array::bubble_sort() {
 }
 
 void Array::insertion_sort() {
-  for (size_t i = 1; i < _number_of_elements; i++) {
+  for (unsigned int i = 1; i < _number_of_elements; i++) {
     int x = _elements[i];
-    size_t j = i;
+    unsigned int j = i;
 
     while (j > 0 && _elements[j - 1] > x) {
       _elements[j] = _elements[j - 1];
