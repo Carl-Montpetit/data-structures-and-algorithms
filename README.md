@@ -47,7 +47,7 @@ Implementing data structures and algorithms from scratch with C++.
 - `get_number_of_elements`
   - $O(1)$
 
-#### Searching algorithms
+#### Searching
 
 - `linear_search`
 
@@ -65,7 +65,7 @@ Implementing data structures and algorithms from scratch with C++.
   - best: $O(1)$
   - worst: $O(\log n)$
 
-#### Sorting algorithms
+#### Sorting
 
 - `bubble_sort`
   - average: $O(n^2)$
@@ -128,7 +128,7 @@ Implementing data structures and algorithms from scratch with C++.
 - `get_number_of_nodes`
   - $O(1)$
 
-#### Searching algorithms
+#### Searching
 
 - `linear_search`
   > Search the first occurrence of an element in the linked list. Return the
