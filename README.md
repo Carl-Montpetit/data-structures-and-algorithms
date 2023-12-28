@@ -133,7 +133,8 @@ Implementing data structures and algorithms from scratch with C++.
 
 - `linear_search`
   > Search the first occurrence of an element in the linked list. Return the
-  > position of the first occurrence found. Else return $-1$.
+  > position of the first occurrence found. <br />
+  > Else return $-1$.
   - average: O(n)
   - best: O(1): first node found
   - worst: O(n): last node found or not found
