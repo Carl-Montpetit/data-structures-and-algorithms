@@ -6,7 +6,7 @@
 
 Implementing data structures and algorithms from scratch with C++.
 
-## Class `Array<int>` with dynamic capacity
+## Class `Array<T>` with dynamic capacity
 
 ### Methods
 
@@ -51,7 +51,7 @@ Implementing data structures and algorithms from scratch with C++.
 
 - `linear_search`
 
-  > Search the first occurrence of an integer in the array. Return the index of
+  > Search the first occurrence of an element in the array. Return the index of
   > the first occurrence found. <br />
   > Else return $-1$.
 
@@ -75,7 +75,7 @@ Implementing data structures and algorithms from scratch with C++.
 - `selection_sort`
   - TODO
 
-## Class `Node<int>`
+## Class `Node<T>`
 
 ### Methods
 
@@ -92,7 +92,7 @@ Implementing data structures and algorithms from scratch with C++.
 - `set_content`
   - $O(1)$
 
-## Class `LinkedList<Node<int>>`
+## Class `LinkedList<Node<T>>`
 
 ### Methods
 
@@ -132,7 +132,7 @@ Implementing data structures and algorithms from scratch with C++.
 #### Searching algorithms
 
 - `linear_search`
-  > Search the first occurrence of an integer in the linked list. Return the
+  > Search the first occurrence of an element in the linked list. Return the
   > position of the first occurrence found. Else return $-1$.
   - average: O(n)
   - best: O(1): first node found
