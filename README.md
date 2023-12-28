@@ -52,14 +52,16 @@ Implementing data structures and algorithms from scratch with C++.
 - `linear_search`
 
   > Search the first occurrence of an integer in the array. Return the index of
-  > the first occurrence found. Else return $-1$.
+  > the first occurrence found. <br />
+  > Else return $-1$.
 
   - average: O(n)
   - best: O(1): find element at first position
   - worst: O(n): find element at last position
 
 - `binary_search`
-  > Dichotomous search efficiently find position of an element in an array.
+  > Dichotomous search efficiently find position of an element in an array. <br />
+  > **Elements must be already sorted**
   - average: $O(\log n)$
   - best: $O(1)$
   - worst: $O(\log n)$

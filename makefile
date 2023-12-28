@@ -2,7 +2,8 @@ CC := g++
 CFLAGS := -std=c++20 -Wall -Wextra
 
 # List of source files
-SRCS := main.cpp array.cpp node.cpp linked-list.cpp
+SRCS := main.cpp
+HDRS := array.hpp
 
 # List of object files derived from source files
 OBJS := $(SRCS:.cpp=.o)
@@ -15,10 +16,9 @@ $(EXECUTABLE): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(EXECUTABLE)
 
 # Rule to build object files from source files
-%.o: %.cpp
+%.o: %.cpp $(HDRS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Clean rule to remove object files and the executable
+# Clean target to remove generated files
 clean:
 	rm -f $(OBJS) $(EXECUTABLE)
-

@@ -1,19 +1,26 @@
 #ifndef NODE_HPP
 #define NODE_HPP
 
+template <typename T>
+
 class Node {
 private:
   // contain the address of the next node
   Node *_next_node;
-  int _content;
+  T _content;
 
 public:
-  Node();
-  ~Node();
-  Node *get_next_node();
-  int get_content();
-  void set_next_node();
-  void set_content(const int);
+  Node() : _next_node(nullptr), _content() {}
+
+  ~Node() { delete _next_node; }
+
+  Node *get_next_node() { return _next_node; }
+
+  void set_next_node() { _next_node = new Node(); }
+
+  T get_content() { return _content; }
+
+  void set_content(const T content) { _content = content; }
 };
 
 #endif
