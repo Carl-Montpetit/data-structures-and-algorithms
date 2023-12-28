@@ -17,15 +17,14 @@ public:
   void push_node(const int);
   void print_all_nodes_content();
   void print_number_of_nodes();
-  void print_capacity();
-  void swap_two_nodes_elements(const unsigned int, const unsigned int); // TODO
+  void swap_two_nodes_elements(const unsigned int, const unsigned int);
   int get_content_at_position(const unsigned int);
   unsigned int get_number_of_nodes();
   unsigned int linear_search(const int); // TODO
   unsigned int binary_search(const int); // TODO
-  void bubble_sort(); // TODO
-  void insertion_sort(); // TODO
-  void selection_sort(); // TODO
+  void bubble_sort();                    // TODO
+  void insertion_sort();                 // TODO
+  void selection_sort();                 // TODO
 };
 
 #endif

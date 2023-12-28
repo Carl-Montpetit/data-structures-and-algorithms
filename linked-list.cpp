@@ -6,7 +6,10 @@
 
 LinkedList::LinkedList() : _first_node(nullptr), _number_of_nodes(0) {}
 
-LinkedList::~LinkedList() { delete _first_node; }
+LinkedList::~LinkedList() {
+  std::cout << "linked list destructor called!" << '\n';
+  delete _first_node;
+}
 
 void LinkedList::set_content_at_position(const int content,
                                          const unsigned int position) {}
@@ -44,6 +47,34 @@ void LinkedList::print_number_of_nodes() {
   std::cout << _number_of_nodes << '\n';
 }
 
+void LinkedList::swap_two_nodes_elements(const unsigned int index_a,
+                                         const unsigned int index_b) {
+  if (index_a == index_b || index_a > _number_of_nodes ||
+      index_b > _number_of_nodes || index_a < 0 || index_b < 0) {
+    throw std::out_of_range("Cannot swap invalid indexes!");
+  }
+
+  Node *ptr_a = _first_node;
+  Node *ptr_b = _first_node;
+  int temp;
+  unsigned int i = 0;
+  unsigned int j = 0;
+
+  while (i != index_a) {
+    ptr_a = ptr_a->get_next_node();
+    i++;
+  }
+
+  while (j != index_b) {
+    ptr_b = ptr_b->get_next_node();
+    j++;
+  }
+
+  temp = ptr_a->get_content();
+  ptr_a->set_content(ptr_b->get_content());
+  ptr_b->set_content(temp);
+}
+
 int LinkedList::get_content_at_position(const unsigned int position) {
   if (position > _number_of_nodes - 1) {
     throw std::out_of_range("Cannot get content at position " +
@@ -71,6 +102,4 @@ int LinkedList::get_content_at_position(const unsigned int position) {
   return result;
 }
 
-unsigned int LinkedList::get_number_of_nodes() {
-  return _number_of_nodes;
-}
+unsigned int LinkedList::get_number_of_nodes() { return _number_of_nodes; }

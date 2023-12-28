@@ -1,8 +1,12 @@
 #include "node.hpp"
+#include <iostream>
 
 Node::Node() : _next_node(nullptr), _content(0) {}
 
-Node::~Node() { delete _next_node; }
+Node::~Node() {
+  std::cout << "Node destructor called!" << '\n';
+  delete _next_node;
+}
 
 Node *Node::get_next_node() { return _next_node; }
 

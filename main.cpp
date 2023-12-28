@@ -18,9 +18,13 @@ int main() {
     linked_list.push_node(7);
     linked_list.push_node(8);
     linked_list.print_all_nodes_content();
+    linked_list.swap_two_nodes_elements(3, 7);
+    std::cout << "==============================================" << '\n';
+    linked_list.print_all_nodes_content();
     // int result = linked_list.get_content_at_position(8);
     // std::cout << result << '\n';
     std::cout << "==============================================" << '\n';
+    std::cout << "Out of scope!" << '\n';
   }
   /**
    * manage array
