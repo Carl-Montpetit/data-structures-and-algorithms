@@ -1,8 +1,8 @@
 # data-structures-and-algorithms
 
-- [Array<int>](#class-arrayint-with-dynamic-capacity)
-- [Node<int>](#class-nodeint)
-- [LinkedList<Node<int>>](#class-linkedlistnodeint)
+- [Array<T>](#class-arrayt-with-dynamic-capacity)
+- [Node<T>](#class-nodet)
+- [LinkedList<Node<T>>](#class-linkedlistnodet)
 
 Implementing data structures and algorithms from scratch with C++.
 
