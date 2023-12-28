@@ -6,13 +6,31 @@
 
 LinkedList::LinkedList() : _first_node(nullptr), _number_of_nodes(0) {}
 
-LinkedList::~LinkedList() {
-  std::cout << "linked list destructor called!" << '\n';
-  delete _first_node;
-}
+LinkedList::~LinkedList() { delete _first_node; }
 
 void LinkedList::set_content_at_position(const int content,
-                                         const unsigned int position) {}
+                                         const unsigned int target_position) {
+  if (target_position < 0 || target_position > _number_of_nodes - 1) {
+    throw std::out_of_range("Cannot set content of a node that is not valid "
+                            "position in linked list!");
+  }
+
+  Node *temp = _first_node;
+  unsigned int i = 0;
+
+  if (target_position == 0)
+    temp->set_content(content);
+
+  while (temp && i < _number_of_nodes - 1) {
+    temp = temp->get_next_node();
+    i++;
+
+    if (i == target_position) {
+      temp->set_content(content);
+      break;
+    }
+  }
+}
 
 void LinkedList::push_node(const int content) {
   Node *temp = _first_node;
@@ -103,3 +121,24 @@ int LinkedList::get_content_at_position(const unsigned int position) {
 }
 
 unsigned int LinkedList::get_number_of_nodes() { return _number_of_nodes; }
+
+int LinkedList::linear_search(int target_content) {
+  Node *temp = _first_node;
+  int target_position = -1;
+  unsigned int i = 0;
+
+  if (temp->get_content() == target_content) {
+    target_position = 0;
+  } else {
+    while (temp && i < _number_of_nodes - 1) {
+      temp = temp->get_next_node();
+      i++;
+      if (temp->get_content() == target_content) {
+        target_position = i;
+        break;
+      }
+    }
+  }
+
+  return target_position;
+}

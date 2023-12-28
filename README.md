@@ -52,7 +52,7 @@ Implementing data structures and algorithms from scratch with C++.
 - `linear_search`
 
   > Search the first occurrence of an integer in the array. Return the index of
-  > the first element found. Else return $-1$.
+  > the first occurrence found. Else return $-1$.
 
   - average: O(n)
   - best: O(1): find element at first position
@@ -126,3 +126,12 @@ Implementing data structures and algorithms from scratch with C++.
   - worst: $O(n)$: last node in the linked list at position $n$
 - `get_number_of_nodes`
   - $O(1)$
+
+#### Searching algorithms
+
+- `linear_search`
+  > Search the first occurrence of an integer in the linked list. Return the
+  > position of the first occurrence found. Else return $-1$.
+  - average: O(n)
+  - best: O(1): first node found
+  - worst: O(n): last node found or not found

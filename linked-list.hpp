@@ -20,11 +20,11 @@ public:
   void swap_two_nodes_elements(const unsigned int, const unsigned int);
   int get_content_at_position(const unsigned int);
   unsigned int get_number_of_nodes();
-  unsigned int linear_search(const int); // TODO
-  unsigned int binary_search(const int); // TODO
-  void bubble_sort();                    // TODO
-  void insertion_sort();                 // TODO
-  void selection_sort();                 // TODO
+  int linear_search(const int);
+  int binary_search(const int); // TODO
+  void bubble_sort();           // TODO
+  void insertion_sort();        // TODO
+  void selection_sort();        // TODO
 };
 
 #endif
