@@ -5,7 +5,6 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
-#include <utility>
 
 template <typename T>
 
@@ -48,18 +47,15 @@ public:
     Node<T> *temp = _first_node;
 
     if (!temp) {
-      _first_node = new Node<T>();
-      _first_node->set_content(content);
+      _first_node = new Node<T>(content);
     } else if (_number_of_nodes == 1) {
-      _first_node->set_next_node();
-      _first_node->get_next_node()->set_content(content);
+      _first_node->set_next_node(content);
     } else {
       while (temp->get_next_node() != nullptr) {
-        temp = std::move(temp->get_next_node());
+        temp = temp->get_next_node();
       }
 
-      temp->set_next_node();
-      temp->get_next_node()->set_content(content);
+      temp->set_next_node(content);
     }
     _number_of_nodes++;
   }
@@ -103,7 +99,7 @@ public:
     ptr_b->set_content(temp);
   }
 
-  T get_content_at_position(const unsigned int position) {
+  T get_element_at_position(const unsigned int position) {
     if (position > _number_of_nodes - 1) {
       throw std::out_of_range("Cannot get content at position " +
                               std::to_string(position) +
@@ -113,21 +109,17 @@ public:
 
     Node<T> *temp = _first_node;
     unsigned int i = 0;
-    T result;
 
     if (!temp->get_next_node()) {
-      result = temp->get_content();
+      return temp->get_next_node()->get_content();
     } else {
-
       while (temp && i != position) {
         temp = temp->get_next_node();
         i++;
       }
-
-      result = temp->get_content();
     }
 
-    return result;
+    return temp->get_content();
   }
 
   unsigned int get_number_of_nodes() { return _number_of_nodes; }
