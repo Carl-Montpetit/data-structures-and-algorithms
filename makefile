@@ -3,7 +3,7 @@ CFLAGS := -std=c++20 -Wall -Wextra
 
 # List of source files
 SRCS := main.cpp
-HDRS := array.hpp
+HDRS := array.hpp hash-table.hpp key-value-pair.hpp linked-list.hpp node.hpp
 
 # List of object files derived from source files
 OBJS := $(SRCS:.cpp=.o)
@@ -21,4 +21,4 @@ $(EXECUTABLE): $(OBJS)
 
 # Clean target to remove generated files
 clean:
-	rm -f $(OBJS) $(EXECUTABLE)
+	rm -f *.o $(EXECUTABLE)
