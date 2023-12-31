@@ -2,15 +2,17 @@
 #define ARRAY_HPP
 
 #include <iostream>
+#include <memory>
 #include <random>
 #include <stdexcept>
+#include <utility>
 
 template <typename T>
 
 class Array {
 private:
   // contain the address of the first element of the array
-  T *_elements;
+  std::unique_ptr<T[]> _elements;
   unsigned int _capacity;
   unsigned int _number_of_elements;
   bool _is_full;
@@ -19,26 +21,26 @@ public:
   Array(const unsigned int capacity)
       : _capacity(capacity), _number_of_elements(0), _is_full(false) {
     if (capacity >= 2) {
-      _elements = new T[_capacity];
+      _elements = std::unique_ptr<T[]>(new T[_capacity]);
       _capacity = capacity;
     } else {
       throw std::invalid_argument("Error: Array size must be greater than 1!");
     }
   }
 
-  ~Array() { delete[] _elements; }
+  ~Array() = default;
 
   void set_element_at_index(const unsigned int index, const T value) {
     _elements[index] = value;
   }
 
-  void push_element(const T &element) {
+  void push_element(T element) {
     if (_is_full) {
       this->double_capacity();
     }
 
     if (!_is_full && _number_of_elements != _capacity) {
-      _elements[_number_of_elements] = element;
+      _elements[_number_of_elements] = std::move(element);
       _number_of_elements++;
       _number_of_elements == _capacity ? _is_full = true : _is_full = false;
     } else {
@@ -68,11 +70,11 @@ public:
     }
   }
 
-  void print_number_of_elements() {
+  void print_number_of_elements() const {
     std::cout << "number of elements: " << get_number_of_elements() << '\n';
   }
 
-  void print_capacity() { std::cout << "capacity: " << get_capacity() << '\n'; }
+  void print_capacity() const { std::cout << "capacity: " << get_capacity() << '\n'; }
 
   void swap_two_indexes_elements(const unsigned int index_a,
                                  const unsigned int index_b) {
@@ -85,7 +87,7 @@ public:
     unsigned int new_capacity = _capacity * 2;
 
     // create a new array with double capacity
-    T *new_elements = new T[new_capacity];
+    std::unique_ptr<T[]> new_elements = std::make_unique<T[]>(new_capacity);
 
     // copy elements from the old array to the new array
     for (unsigned int i = 0; i < _number_of_elements; i++) {
@@ -93,14 +95,14 @@ public:
     }
 
     // Update array properties
-    _elements = new_elements;
+    _elements = std::move(new_elements);
     _capacity = new_capacity;
     _is_full = false;
   }
 
-  bool get_is_full() { return _is_full; }
+  bool get_is_full() const { return _is_full; }
 
-  T get_element_at_index(const unsigned int index) {
+  T &get_element_at_index(const unsigned int index) const {
     if (index >= 0 && index <= _number_of_elements - 1) {
       return _elements[index];
     } else {
@@ -108,14 +110,14 @@ public:
     }
   }
 
-  unsigned int get_capacity() { return _capacity; }
+  unsigned int get_capacity() const { return _capacity; }
 
-  unsigned int get_number_of_elements() { return _number_of_elements; }
+  unsigned int get_number_of_elements() const { return _number_of_elements; }
 
   /**
    * search algorithms
    */
-  int linear_search(const T target) {
+  int linear_search(const T target) const {
     bool is_found = false;
     int target_position = -1;
     unsigned int i = 0;
@@ -131,7 +133,7 @@ public:
     return target_position;
   }
 
-  int binary_search(const T target) {
+  int binary_search(const T target) const {
     bool is_found = false;
     int target_position = -1;
     unsigned int low_index = 0;
