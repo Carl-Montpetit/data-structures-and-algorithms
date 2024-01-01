@@ -4,7 +4,9 @@ Implementing data structures and algorithms from scratch with C++.
 
 - [Array<T>](#class-arrayt-with-dynamic-capacity)
 - [Node<T>](#class-nodet)
-- [LinkedList<Node<T>>](#class-linkedlistnodet)
+- [LinkedList<T>](#class-linkedlistnodet)
+- [KeyValuePair<T>](#class-keyvaluepairt)
+- [HashTable<T>](#class-hashtablet)
 
 ## Class `Array<T>` with dynamic capacity
 
@@ -91,7 +93,7 @@ Implementing data structures and algorithms from scratch with C++.
 - `set_content`
   - $O(1)$
 
-## Class `LinkedList<Node<T>>`
+## Class `LinkedList<T>`
 
 ### Methods
 
@@ -136,3 +138,29 @@ Implementing data structures and algorithms from scratch with C++.
   - average: O(n)
   - best: O(1): first node found
   - worst: O(n): last node found or not found
+
+## Class `KeyValuePair<T>`
+
+### Methods
+
+- constructor
+- destructor
+- get_key
+- set_key
+- get_value
+- set_value
+
+## Class `HashTable<T>`
+
+### Methods
+
+- hash 
+- constructor
+- destructor
+- get_size
+- set_size
+- get_key
+- set_key
+- get_value
+- set_value
+- insert_key_value_pair
