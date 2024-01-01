@@ -3,18 +3,25 @@
 
 #include <string>
 
+template <typename T>
+
 class KeyValuePair {
 private:
   std::string _key;
-  int _value;
+  T _value;
 
 public:
-  KeyValuePair(const std::string key, const int value);
-  ~KeyValuePair();
-  std::string get_key();
-  void set_key(const std::string);
-  int get_value();
-  void set_value(const int);
+  KeyValuePair(const std::string key, const T value) : _key(key), _value(value) {}
+
+  ~KeyValuePair() = default;
+
+  const std::string &get_key() const { return _key; }
+
+  void set_key(const std::string &key) { _key = key; }
+
+  const T &get_value() const { return _value; } 
+
+  void set_value(const int &value) { _value = value; }
 };
 
 #endif
