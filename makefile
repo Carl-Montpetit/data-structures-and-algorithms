@@ -1,5 +1,7 @@
-CC := g++
-CFLAGS := -std=c++20 -Wall -Wextra
+CC := clang++
+CFLAGS := -fsanitize=address -std=c++20 -Wall -Wextra -g
+# LLVM prefix
+LLVM_PREFIX := /opt/homebrew/Cellar/llvm/17.0.6
 
 # List of source files
 SRCS := main.cpp
@@ -22,3 +24,7 @@ $(EXECUTABLE): $(OBJS)
 # Clean target to remove generated files
 clean:
 	rm -f *.o $(EXECUTABLE)
+
+# Analyze target to run the Clang Static Analyzer
+analyze:
+	$(LLVM_PREFIX)/bin/scan-build make
