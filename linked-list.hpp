@@ -4,65 +4,56 @@
 #include "node.hpp"
 #include <iostream>
 #include <stdexcept>
-#include <string>
 
 template <typename T>
 
 class LinkedList {
 private:
-  // contain the address of the first element of the array
+  // contain the address of the first node of the linked list
   Node<T> *_first_node;
   unsigned int _number_of_nodes;
 
 public:
-  LinkedList() : _first_node(nullptr), _number_of_nodes(0) {}
+  LinkedList() : _first_node(), _number_of_nodes(0) {}
 
   ~LinkedList() { delete _first_node; }
 
-  void set_content_at_position(const T content,
+  void set_content_at_position(const T &content,
                                const unsigned int target_position) {
-    if (target_position < 0 || target_position > _number_of_nodes - 1) {
-      throw std::out_of_range("Cannot set content of a node that is not valid "
-                              "position in linked list!");
+    if (target_position < 0 || target_position >= _number_of_nodes) {
+      throw std::out_of_range(
+          "Cannot set content at an invalid position in the linked list!");
     }
 
     Node<T> *temp = _first_node;
     unsigned int i = 0;
-
-    if (target_position == 0)
-      temp->set_content(content);
-
-    while (temp && i < _number_of_nodes - 1) {
+    while (i != target_position) {
       temp = temp->get_next_node();
       i++;
-
-      if (i == target_position) {
-        temp->set_content(content);
-        break;
-      }
     }
+
+    temp->set_content(content);
   }
 
-  void push_node(const T content) {
-    Node<T> *temp = _first_node;
+  void push(const T &content) {
+    Node<T> *new_node = new Node<T>(content);
 
-    if (!temp) {
-      _first_node = new Node<T>(content);
-    } else if (_number_of_nodes == 1) {
-      _first_node->set_next_node(content);
+    if (_first_node == nullptr) {
+      _first_node = new_node;
     } else {
+      Node<T> *temp = _first_node;
       while (temp->get_next_node() != nullptr) {
         temp = temp->get_next_node();
       }
 
-      temp->set_next_node(content);
+      temp->set_next_node(new_node);
     }
+
     _number_of_nodes++;
   }
 
   void print_all_nodes_content() {
     Node<T> *temp = _first_node;
-
     while (temp != nullptr) {
       std::cout << temp->get_content() << '\n';
       temp = temp->get_next_node();
@@ -99,24 +90,17 @@ public:
     ptr_b->set_content(temp);
   }
 
-  T get_element_at_position(const unsigned int position) {
-    if (position > _number_of_nodes - 1) {
-      throw std::out_of_range("Cannot get content at position " +
-                              std::to_string(position) +
-                              ". Out of bound because number of nodes is " +
-                              std::to_string(_number_of_nodes) + "!");
+  T &get_element_at_position(const unsigned int position) {
+    if (position >= _number_of_nodes) {
+      throw std::out_of_range(
+          "Cannot get content at an invalid position in the linked list!");
     }
 
     Node<T> *temp = _first_node;
     unsigned int i = 0;
-
-    if (!temp->get_next_node()) {
-      return temp->get_next_node()->get_content();
-    } else {
-      while (temp && i != position) {
-        temp = temp->get_next_node();
-        i++;
-      }
+    while (i != position) {
+      temp = temp->get_next_node();
+      i++;
     }
 
     return temp->get_content();
@@ -129,17 +113,13 @@ public:
     int target_position = -1;
     unsigned int i = 0;
 
-    if (temp->get_content() == target_content) {
-      target_position = 0;
-    } else {
-      while (temp && i < _number_of_nodes - 1) {
-        temp = temp->get_next_node();
-        i++;
-        if (temp->get_content() == target_content) {
-          target_position = i;
-          break;
-        }
+    while (temp != nullptr && i < _number_of_nodes) {
+      if (temp->get_content() == target_content) {
+        target_position = i;
+        break;
       }
+      temp = temp->get_next_node();
+      i++;
     }
 
     return target_position;

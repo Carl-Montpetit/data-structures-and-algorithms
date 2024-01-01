@@ -2,17 +2,15 @@
 #define ARRAY_HPP
 
 #include <iostream>
-#include <memory>
 #include <random>
 #include <stdexcept>
-#include <utility>
 
 template <typename T>
 
 class Array {
 private:
   // contain the address of the first element of the array
-  std::unique_ptr<T[]> _elements;
+  T *_elements;
   unsigned int _capacity;
   unsigned int _number_of_elements;
   bool _is_full;
@@ -21,7 +19,7 @@ public:
   Array(const unsigned int capacity)
       : _capacity(capacity), _number_of_elements(0), _is_full(false) {
     if (capacity >= 2) {
-      _elements = std::unique_ptr<T[]>(new T[_capacity]);
+      _elements = new T[_capacity];
       _capacity = capacity;
     } else {
       throw std::invalid_argument("Error: Array size must be greater than 1!");
@@ -40,7 +38,7 @@ public:
     }
 
     if (!_is_full && _number_of_elements != _capacity) {
-      _elements[_number_of_elements] = std::move(element);
+      _elements[_number_of_elements] = element;
       _number_of_elements++;
       _number_of_elements == _capacity ? _is_full = true : _is_full = false;
     } else {
@@ -87,7 +85,7 @@ public:
     unsigned int new_capacity = _capacity * 2;
 
     // create a new array with double capacity
-    std::unique_ptr<T[]> new_elements = std::make_unique<T[]>(new_capacity);
+    T *new_elements = new T[new_capacity];
 
     // copy elements from the old array to the new array
     for (unsigned int i = 0; i < _number_of_elements; i++) {
@@ -95,7 +93,7 @@ public:
     }
 
     // Update array properties
-    _elements = std::move(new_elements);
+    _elements = new_elements;
     _capacity = new_capacity;
     _is_full = false;
   }
