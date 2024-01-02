@@ -26,7 +26,11 @@ public:
     }
   }
 
-  ~Array() = default;
+  ~Array() {delete [] _elements; };
+
+  T &operator[] (const unsigned int index) const {
+    return this->get_element_at_index(index);
+  }
 
   void set_element_at_index(const unsigned int index, const T value) {
     _elements[index] = value;
@@ -61,7 +65,7 @@ public:
       _is_full = true;
   }
 
-  void print_all_elements() {
+  void print_all_elements() const {
     for (unsigned int i = 0; i < _number_of_elements; i++) {
       std::cout << "element at index " << i << ": " << get_element_at_index(i)
                 << '\n';
