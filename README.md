@@ -16,6 +16,8 @@ Implementing data structures and algorithms from scratch with C++.
   - $O(1)$
 - destructor
   - $O(1)$
+- `operator[]`
+  - $O(1)$
 - `set_element_at_index`
   - $O(1)$
 - `push_element`
@@ -104,6 +106,10 @@ Implementing data structures and algorithms from scratch with C++.
   - best: $O(1)$: one node or none in current linked list
   - worst: $O(n)$: call $n$ time Node class destructor for each nodes in linked
     list
+- `operator[]`
+  - average: $O(n)$
+  - best: $O(1)$: only one node in the linked list or it's the first position
+  - worst: $O(n)$: last node in the linked list at position $n$
 - `set_content_at_position`
   - average: $O(n)$
   - best: $O(1)$ first node in the linked list
@@ -144,23 +150,50 @@ Implementing data structures and algorithms from scratch with C++.
 ### Methods
 
 - constructor
+  - $O(1)$
 - destructor
-- get_key
-- set_key
-- get_value
-- set_value
+  - $O(1)$
+- `get_key`
+  - $O(1)$
+- `set_key`
+  - $O(1)$
+- `get_value`
+  - $O(1)$
+- `set_value`
+  - $O(1)$
 
 ## Class `HashTable<T>`
 
 ### Methods
 
-- hash 
 - constructor
+  - $O(1)$
 - destructor
-- get_size
-- set_size
+  - average: $O(n)$
+  - best: $O(1)$
+  - worst: $O(n)$
+- `hash`
+  - average: $O(n)$
+  - best: $O(1)$: one character in the key string
+  - worst: $O(n)$: $n$ characters in the key string
+- `get_size`
+  - $O(1)$
+- `set_size`
 - get_key
-- set_key
-- get_value
-- set_value
-- insert_key_value_pair
+  - average: $O(n)$
+  - best: $O(1)$: one element in the associated linked list or it's the first
+    element
+  - worst: $O(n)$: $n$ elements in the associated linked list and the target is
+    not the first element
+- `set_key`
+- `get_value`
+  - average: $O(n)$
+  - best: $O(1)$: one element in the associated linked list or it's the first
+    element
+  - worst: $O(n)$: $n$ elements in the associated linked list and the target is
+    not the first element
+- `set_value`
+- `insert_key_value_pair`
+  - average: $O(n)$
+  - best: $O(1)$
+  - worst: $O(n)$
