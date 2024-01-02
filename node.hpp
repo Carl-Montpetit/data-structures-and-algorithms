@@ -16,7 +16,7 @@ public:
 
   ~Node() { delete _next_node; }
 
-  Node<T> *get_next_node() { return _next_node; }
+  Node<T> *get_next_node() const { return _next_node; }
 
   void set_next_node(Node<T> *nextNode) { _next_node = nextNode; }
 

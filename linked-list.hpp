@@ -18,6 +18,10 @@ public:
 
   ~LinkedList() { delete _first_node; }
 
+  T &operator[] (const unsigned int position) const {
+    return this->get_element_at_position(position);
+  }
+
   void set_content_at_position(const T &content,
                                const unsigned int target_position) {
     if (target_position < 0 || target_position >= _number_of_nodes) {
@@ -52,7 +56,7 @@ public:
     _number_of_nodes++;
   }
 
-  void print_all_nodes_content() {
+  void print_all_nodes_content() const {
     Node<T> *temp = _first_node;
     while (temp != nullptr) {
       std::cout << temp->get_content() << '\n';
@@ -60,7 +64,7 @@ public:
     }
   }
 
-  void print_number_of_nodes() { std::cout << _number_of_nodes << '\n'; }
+  void print_number_of_nodes() const { std::cout << _number_of_nodes << '\n'; }
 
   void swap_two_nodes_elements(const unsigned int index_a,
                                const unsigned int index_b) {
@@ -90,7 +94,7 @@ public:
     ptr_b->set_content(temp);
   }
 
-  T &get_element_at_position(const unsigned int position) {
+  T &get_element_at_position(const unsigned int position) const {
     if (position >= _number_of_nodes) {
       throw std::out_of_range(
           "Cannot get content at an invalid position in the linked list!");
@@ -106,9 +110,9 @@ public:
     return temp->get_content();
   }
 
-  unsigned int get_number_of_nodes() { return _number_of_nodes; }
+  unsigned int get_number_of_nodes() const { return _number_of_nodes; }
 
-  int linear_search(T target_content) {
+  int linear_search(T target_content) const {
     Node<T> *temp = _first_node;
     int target_position = -1;
     unsigned int i = 0;

@@ -36,7 +36,7 @@ public:
     _elements[index] = value;
   }
 
-  void push_element(T element) {
+  void push_element(T &element) {
     if (_is_full) {
       this->double_capacity();
     }
