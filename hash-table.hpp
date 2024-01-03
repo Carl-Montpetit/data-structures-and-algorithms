@@ -159,12 +159,6 @@ public:
     const int linked_list_index =
         _table[array_index].linear_search(key_value_pair);
 
-    if (linked_list_index >= 0) {
-      std::cout << "FOUND" << '\n';
-    } else {
-      std::cout << "NOT FOUND" << '\n';
-    }
-
     return linked_list_index;
   }
 
