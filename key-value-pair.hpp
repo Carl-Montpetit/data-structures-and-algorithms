@@ -11,7 +11,8 @@ private:
   T _value;
 
 public:
-  KeyValuePair(const std::string key, const T value) : _key(key), _value(value) {}
+  KeyValuePair(const std::string key, const T value)
+      : _key(key), _value(value) {}
 
   ~KeyValuePair() = default;
 
@@ -19,9 +20,16 @@ public:
 
   void set_key(const std::string &key) { _key = key; }
 
-  const T &get_value() const { return _value; } 
+  const T &get_value() const { return _value; }
 
   void set_value(const int &value) { _value = value; }
 };
+
+template <typename T>
+bool operator==(const KeyValuePair<T> &left_hand_side,
+                const KeyValuePair<T> &right_hand_side) {
+  return left_hand_side.get_key() == right_hand_side.get_key() &&
+         left_hand_side.get_value() == right_hand_side.get_value();
+}
 
 #endif
