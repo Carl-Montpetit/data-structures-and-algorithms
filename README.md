@@ -94,8 +94,12 @@ Implementing data structures and algorithms from scratch with C++.
   - $O(1)$
 - `set_content`
   - $O(1)$
+- `remove`
+  - $O(1)$
 
 ## Class `LinkedList<T>`
+
+> Internally using the `Node<T>` class.
 
 ### Methods
 
@@ -122,8 +126,6 @@ Implementing data structures and algorithms from scratch with C++.
   - average: $O(n)$
   - best: $O(1)$: just one node in the linked list
   - worst: $O(n)$ $n$ nodes in the linked list
-- `print_number_of_nodes`
-  - $O(1)$
 - `swap_two_nodes_elements`
   - average: O(n+m), where $m>n$
   - best: O(n+m): positions $0$ and $1$
@@ -135,6 +137,10 @@ Implementing data structures and algorithms from scratch with C++.
   - worst: $O(n)$: last node in the linked list at position $n$
 - `get_number_of_nodes`
   - $O(1)$
+- `remove_node`
+  - average: $O(n)$
+  - best: $O(1)$: only one node in the linked list or it's the first position
+  - worst: $O(n)$: last node in the linked list at position $n$
 
 #### Searching
 
@@ -164,6 +170,8 @@ Implementing data structures and algorithms from scratch with C++.
 
 ## Class `HashTable<T>`
 
+> The property `_table` is an `Array<LinkedList<KeyValuePair<T>>>`.
+
 ### Methods
 
 - constructor
@@ -176,16 +184,28 @@ Implementing data structures and algorithms from scratch with C++.
   - average: $O(n)$
   - best: $O(1)$: one character in the key string
   - worst: $O(n)$: $n$ characters in the key string
-- `get_size`
+- `get_number_of_buckets`
   - $O(1)$
-- `set_size`
-- get_key
+- `get_number_of_elements`
+  - $O(1)$
+- `set_number_of_buckets`
+  - average: $O(n)$
+  - best: $O(1)$: one element in the associated linked list or it's the first
+    element
+  - worst: $O(n)$: $n$ elements in the associated linked list and the target is
+    not the first element
+- `get_key`
   - average: $O(n)$
   - best: $O(1)$: one element in the associated linked list or it's the first
     element
   - worst: $O(n)$: $n$ elements in the associated linked list and the target is
     not the first element
 - `set_key`
+  - average: $O(n)$
+  - best: $O(1)$: one element in the associated linked list or it's the first
+    element
+  - worst: $O(n)$: $n$ elements in the associated linked list and the target is
+    not the first element
 - `get_value`
   - average: $O(n)$
   - best: $O(1)$: one element in the associated linked list or it's the first
@@ -193,7 +213,32 @@ Implementing data structures and algorithms from scratch with C++.
   - worst: $O(n)$: $n$ elements in the associated linked list and the target is
     not the first element
 - `set_value`
-- `insert_key_value_pair`
+  - average: $O(n)$
+  - best: $O(1)$: one element in the associated linked list or it's the first
+    element
+  - worst: $O(n)$: $n$ elements in the associated linked list and the target is
+    not the first element
+- `insert`
+  > Internally using push_node method on the targeted linked list. <break /> Will
+  > refuse to insert if load factor reach the value $0.7$.
   - average: $O(n)$
   - best: $O(1)$
   - worst: $O(n)$
+- `insert_random`
+  - average: $O(n)$
+  - best: $O(1)$
+  - worst: $O(n)$
+- `remove`
+  - average: $O(n)$
+  - best: $O(1)$
+  - worst: $O(n)$
+- `find`
+  > internally using linear_search method on the targeted linked list that
+  > contains the element. <br /> Return the index of the position in linked list
+  > if found. <br /> Else return $-1$.
+  - average: $O(n)$
+  - best: $O(1)$
+  - worst: $O(n)$
+- `load_factor`
+  > Return \_number_of_elements / \_number_of_buckets value of the hash table.
+  - average: $O(1)$
