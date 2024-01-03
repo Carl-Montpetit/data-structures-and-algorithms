@@ -177,9 +177,12 @@ Implementing data structures and algorithms from scratch with C++.
 - constructor
   - $O(1)$
 - destructor
-  - average: $O(n)$
-  - best: $O(1)$
-  - worst: $O(n)$
+  > Delete all the dynamically allocated nodes in the heap. <break />
+  > Where $n$ is the length of the array and $m$ the number of nodes per linked lists. <break /> 
+  - average: $O(n)$: load factor is optimize to not grow beyond $0.7$.
+  - best: $O(1)$: length of the array is $1$ and there's only one node.
+  - worst: $O(n \cdot m)$: if there's $m$ nodes per $n$ linked lists.
+
 - `hash`
   - average: $O(n)$
   - best: $O(1)$: one character in the key string
@@ -188,57 +191,50 @@ Implementing data structures and algorithms from scratch with C++.
   - $O(1)$
 - `get_number_of_elements`
   - $O(1)$
-- `set_number_of_buckets`
-  - average: $O(n)$
-  - best: $O(1)$: one element in the associated linked list or it's the first
-    element
-  - worst: $O(n)$: $n$ elements in the associated linked list and the target is
-    not the first element
 - `get_key`
-  - average: $O(n)$
+  - average: $O(1)$
   - best: $O(1)$: one element in the associated linked list or it's the first
     element
   - worst: $O(n)$: $n$ elements in the associated linked list and the target is
     not the first element
 - `set_key`
-  - average: $O(n)$
+  - average: $O(1)$
   - best: $O(1)$: one element in the associated linked list or it's the first
     element
   - worst: $O(n)$: $n$ elements in the associated linked list and the target is
     not the first element
 - `get_value`
-  - average: $O(n)$
+  - average: $O(1)$
   - best: $O(1)$: one element in the associated linked list or it's the first
     element
   - worst: $O(n)$: $n$ elements in the associated linked list and the target is
     not the first element
 - `set_value`
-  - average: $O(n)$
+  - average: $O(1)$
   - best: $O(1)$: one element in the associated linked list or it's the first
     element
   - worst: $O(n)$: $n$ elements in the associated linked list and the target is
     not the first element
 - `insert`
-  > Internally using push_node method on the targeted linked list. <break /> Will
-  > refuse to insert if load factor reach the value $0.7$.
-  - average: $O(n)$
+  > Will refuse to insert if load factor reach the value $0.7$.
+  - average: $O(1)$
   - best: $O(1)$
   - worst: $O(n)$
 - `insert_random`
-  - average: $O(n)$
+  - average: $O(1)$
   - best: $O(1)$
   - worst: $O(n)$
 - `remove`
-  - average: $O(n)$
+  - average: $O(1)$
   - best: $O(1)$
   - worst: $O(n)$
 - `find`
-  > internally using linear_search method on the targeted linked list that
-  > contains the element. <br /> Return the index of the position in linked list
-  > if found. <br /> Else return $-1$.
-  - average: $O(n)$
+  > Return the index of the position in targeted linked list
+  > if found. <br /> 
+  > Else return $-1$.
+  - average: $O(1)$
   - best: $O(1)$
   - worst: $O(n)$
 - `load_factor`
-  > Return \_number_of_elements / \_number_of_buckets value of the hash table.
+  > Return number_of_elements / number_of_buckets value of the hash table.
   - average: $O(1)$
