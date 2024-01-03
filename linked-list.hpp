@@ -11,14 +11,22 @@ class LinkedList {
 private:
   // contain the address of the first node of the linked list
   Node<T> *_first_node;
-  unsigned int _number_of_nodes;
+  unsigned int _number_of_nodes = 0;
 
 public:
-  LinkedList() : _first_node(), _number_of_nodes(0) {}
+  LinkedList() : _first_node() {}
 
-  ~LinkedList() { delete _first_node; }
+  ~LinkedList() {
+    Node<T> *ptr = _first_node;
+    while (ptr) {
+      Node<T> *next = ptr->get_next_node();
+      delete ptr;
+      ptr = next;
+    }
+    _first_node = nullptr;
+  }
 
-  T &operator[] (const unsigned int position) const {
+  T &operator[](const unsigned int position) const {
     return this->get_element_at_position(position);
   }
 
@@ -63,8 +71,6 @@ public:
       temp = temp->get_next_node();
     }
   }
-
-  void print_number_of_nodes() const { std::cout << _number_of_nodes << '\n'; }
 
   void swap_two_nodes_elements(const unsigned int index_a,
                                const unsigned int index_b) {
@@ -111,6 +117,32 @@ public:
   }
 
   unsigned int get_number_of_nodes() const { return _number_of_nodes; }
+
+  void remove_node(const unsigned int index) {
+    if (index > _number_of_nodes || index < 0) {
+      throw std::out_of_range("Invalid index for removal in the linked list!");
+    }
+
+    if (index == 0) {
+      Node<T> *temp = _first_node;
+      _first_node = _first_node->get_next_node();
+      delete temp;
+    } else {
+      Node<T> *prev = _first_node;
+      unsigned int i = 0;
+
+      while (i != index - 1) {
+        prev = prev->get_next_node();
+        i++;
+      }
+
+      Node<T> *current = prev->get_next_node();
+      prev->set_next_node(current->get_next_node());
+      delete current;
+    }
+
+    _number_of_nodes--;
+  }
 
   int linear_search(T target_content) const {
     Node<T> *temp = _first_node;
