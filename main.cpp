@@ -1,21 +1,44 @@
-#include "array.hpp"
 #include "hash-table.hpp"
-#include "key-value-pair.hpp"
-#include "linked-list.hpp"
-#include <functional>
 #include <iostream>
 #include <string>
 
 int main() {
   {
+    // load factor = _number_of_elements / _number_of_buckets, optimal =>
+    // load_factor = 0.7
     HashTable<int> hash_table(10);
-    hash_table.insert_key_value_pair("minou", 2);
-    hash_table.insert_key_value_pair("michelle", 8);
-    hash_table.insert_key_value_pair("carl", 7);
-    hash_table.insert_key_value_pair("pascal", 1);
-    hash_table.insert_key_value_pair("cashew", 0);
-    hash_table.insert_key_value_pair("naruto", 2);
-    std::cout << hash_table.get_key(2, 0) << '\n';
+    std::cout << "==============================================" << '\n';
+    // unsigned int i = 0;
+    // while (i < 7) {
+    //   hash_table.insert_random();
+    //   i++;
+    // }
+    std::cout << "==============================================" << '\n';
+    hash_table.insert("bye", 0);
+    hash_table.insert("minou", 7);
+    hash_table.insert("cashew", 1);
+    hash_table.insert("michelle", 9);
+    hash_table.insert("carl", 3);
+    hash_table.insert("pascal", 6);
+    hash_table.insert("carole", 6);
+    // hash_table.insert("daniel", 4);
+    // hash_table.insert("jesus", 8);
+    // hash_table.insert("newton", 2);
+    // for (unsigned int i = 0; i < hash_table.get_number_of_buckets(); i++) {
+    //   std::cout << hash_table[i].get_number_of_nodes() << '\n';
+    // }
+    std::cout << "==============================================" << '\n';
+    std::cout << "number of buckets: " << hash_table.get_number_of_buckets()
+              << '\n';
+    std::cout << "number of elements: " << hash_table.get_number_of_elements()
+              << '\n';
+    std::cout << "load factor: " << hash_table.load_factor() << '\n';
+    hash_table.find("carl", 3);
+    hash_table.remove("carl", 3);
+    std::cout << "number of elements: " << hash_table.get_number_of_elements()
+              << '\n';
+    std::cout << "==============================================" << '\n';
+    hash_table.find("carl", 3);
   }
   /**
    * manage linked-list
@@ -36,11 +59,12 @@ int main() {
   //   std::cout << "==============================================" << '\n';
   //   // linked_list.set_content_at_position("home", 0);
   //   linked_list.swap_two_nodes_elements(3, 5);
-  //   // linked_list.linear_search("note") >= 0 ? std::cout << "FOUND" << '\n'
-  //                                          // : std::cout << "NOT FOUND" <<
-  //                                          // '\n';
-  //   // std::cout << linked_list.get_number_of_nodes() << '\n';
-  //   // std::cout << linked_list.get_element_at_position(2) << '\n';
+  //   linked_list.linear_search("note") >= 0 ? std::cout << "FOUND" << '\n'
+  //                                          : std::cout << "NOT FOUND" <<
+  //                                          '\n';
+  //   std::cout << linked_list.get_number_of_nodes() << '\n';
+  //   std::cout << linked_list.get_element_at_position(2) << '\n';
+  //   std::cout << linked_list[4] << '\n';
   //   std::cout << "==============================================" << '\n';
   //   linked_list.print_all_nodes_content();
   // }
@@ -64,6 +88,7 @@ int main() {
   //   array_int.insertion_sort();
   //   array_int.print_all_elements();
   //   std::cout << "==============================================" << '\n';
+  //   std::cout << array_int[3] << '\n';
   // }
   // {
   //   Array<std::string> array_str(30);
@@ -84,7 +109,8 @@ int main() {
   //   array_str.bubble_sort();
   //   array_str.print_all_elements();
   //   std::cout << "==============================================" << '\n';
-  //   std::cout << "NUMBER OF ELEMENTS: " << array_str.get_number_of_elements()
+  //   std::cout << "NUMBER OF ELEMENTS: " <<
+  //   array_str.get_number_of_elements()
   //   << '\n'; int found_position = array_str.binary_search("asfasds"); if
   //   (found_position >= 0) {
   //     std::cout << "FOUND AT: " << found_position << '\n';
