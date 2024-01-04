@@ -4,7 +4,7 @@ Implementing data structures and algorithms from scratch with C++.
 
 - [Array<T>](#class-arrayt-with-dynamic-capacity)
 - [Node<T>](#class-nodet)
-- [LinkedList<T>](#class-linkedlistnodet)
+- [LinkedList<T>](#class-linkedlistt)
 - [KeyValuePair<T>](#class-keyvaluepairt)
 - [HashTable<T>](#class-hashtablet)
 
